@@ -13,9 +13,9 @@ course_url = input('course url ? ')
 
 number_of_videos = input('How videos do you want to download ? ')
 
-user_email = input(' Your email ? ')
+user_email = "hussam0683@gmail.com"
 
-user_password = input(' Your password ? ')
+user_password = "5b9ebe7e6d1e49ea951bff40a3323b0d6c66d650de0e2497fc42ce2d22ada645"
 
 # login process
 
@@ -42,4 +42,4 @@ driver.get(course_url)
 for x in range(0, int(number_of_videos)):
         links = driver.find_elements_by_class_name('opacity-25')[x].find_element_by_tag_name('a')
         links.click()
-        time.sleep(10)
+        time.sleep(60)
