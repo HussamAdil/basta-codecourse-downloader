@@ -1,1 +1,1 @@
-# basta-codecourse-downloader
+# basta
