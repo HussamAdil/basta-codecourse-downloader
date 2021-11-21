@@ -27,7 +27,7 @@ def main(chrome_path, course_url, number_of_videos, email, password):
     driver.implicitly_wait(5)
     driver.get(course_url)
 
-    #download
+    # download
     for x in range(0, int(number_of_videos)):
             links = driver.find_elements_by_class_name('opacity-25')[x].find_element_by_tag_name('a')
             links.click()
