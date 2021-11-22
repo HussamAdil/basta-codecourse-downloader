@@ -14,14 +14,14 @@ import click
 def main(chrome_path, course_url, number_of_videos, email, password):
     """A small script to help you download videos from CodeCourse"""
     
-    driver = webdriver.Chrome(chrome_path)
+    driver = webdriver.Firefox()
 
     # login process
     driver.get("https://codecourse.com/auth/signin")
     email = driver.find_element_by_id("email")
     password = driver.find_element_by_id("password")
-    email.send_keys(user_email)
-    password.send_keys(user_password)
+    email.send_keys(email)
+    password.send_keys(password)
     driver.find_element_by_tag_name("button").click()
     WebDriverWait(driver, 10).until(EC.url_to_be("https://codecourse.com/dashboard"))
     driver.implicitly_wait(5)
