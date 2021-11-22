@@ -18,10 +18,12 @@ def main(chrome_path, course_url, number_of_videos, email, password):
 
     # login process
     driver.get("https://codecourse.com/auth/signin")
-    email = driver.find_element_by_id("email")
-    password = driver.find_element_by_id("password")
-    email.send_keys(email)
-    password.send_keys(password)
+
+    web_email = driver.find_element_by_id("email")
+    web_password = driver.find_element_by_id("password")
+    web_email.send_keys(email)
+    web_password.send_keys(password)
+    
     driver.find_element_by_tag_name("button").click()
     WebDriverWait(driver, 10).until(EC.url_to_be("https://codecourse.com/dashboard"))
     driver.implicitly_wait(5)
