@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+
 import click
 
 
@@ -35,10 +37,14 @@ def main(chrome_path, course_url, number_of_videos, email, password):
     
     # download
     for x in range(1, int(number_of_videos)):
+        try:
             links = driver.find_elements_by_class_name('opacity-25')[x].find_element_by_tag_name('a')
             links.click()
             time.sleep(20)
-              
+        except NoSuchElementException:
+            driver.close()
+            print('videos are not downloadable sorry man :(  ')      
+            break
             
 if __name__ == "__main__":
     main()
