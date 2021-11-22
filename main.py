@@ -16,24 +16,30 @@ def main(chrome_path, course_url, number_of_videos, email, password):
     
     driver = webdriver.Chrome(chrome_path)
 
-    # login process
+    # go to login url  process
     driver.get("https://codecourse.com/auth/signin")
-
+    
     web_email = driver.find_element_by_id("email")
     web_password = driver.find_element_by_id("password")
+    
+    #submit login form 
     web_email.send_keys(email)
     web_password.send_keys(password)
-    
     driver.find_element_by_tag_name("button").click()
+    
+    # wait until login successful done
     WebDriverWait(driver, 10).until(EC.url_to_be("https://codecourse.com/dashboard"))
-    driver.implicitly_wait(5)
+    
     driver.get(course_url)
-
+    driver.implicitly_wait(10)
+    
     # download
-    for x in range(0, int(number_of_videos)):
+    for x in range(1, int(number_of_videos)):
             links = driver.find_elements_by_class_name('opacity-25')[x].find_element_by_tag_name('a')
             links.click()
-            time.sleep(10)
-
+            time.sleep(20)
+              
+            
 if __name__ == "__main__":
     main()
+              
